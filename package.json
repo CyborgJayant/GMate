@@ -1,0 +1,22 @@
+{
+  "name": "gmate",
+  "version": "1.0.0",
+  "description": "Telegram bot for google classroom",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "google",
+    "classroom",
+    "googleclassroom"
+  ],
+  "author": "FUBAR",
+  "license": "ISC",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.50.0"
+  }
+}
