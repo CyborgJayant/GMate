@@ -67,3 +67,11 @@ bot.onText(/?!(\/start)(\/authors)(\/help)(\/gc)(\/twittertrends)/,(msg,match)=>
     bot.sendMessage(chatId,'Please Enter a valid command/message')
 });
 */
+
+bot.on('message', function(msg){
+    let text=msg.text;
+    if(text && !( (text === "/start" || text === "/authors" || text === "/help" || text.includes("/gc") || text.includes("/twittertrends") ) ) )
+        {       
+    bot.sendMessage(chatId, "Please Enter a valid command/message");
+        }
+})
