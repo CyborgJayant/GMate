@@ -53,5 +53,16 @@ bot.onText(/\/help$/,(msg,match)=>{
 
 bot.onText(/\/gc/,(msg,match)=>{
     var chatId=msg.chat.id
-    bot.sendMessage(chatId,'')
+    bot.sendMessage(chatId,'Will link API support shortly')
+});
+
+bot.onText(/\/twitterTrends/,(msg,match)=>{
+    var chatId=msg.chat.id
+    bot.sendMessage(chatId,'Will link API support shortly')
+});
+
+
+bot.onText(/.+/,(msg,match)=>{
+    var chatId=msg.chat.id
+    bot.sendMessage(chatId,'Please Enter a valid command/message')
 });
