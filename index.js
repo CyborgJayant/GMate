@@ -69,6 +69,7 @@ bot.onText(/?!(\/start)(\/authors)(\/help)(\/gc)(\/twittertrends)/,(msg,match)=>
 */
 
 bot.on('message', function(msg){
+    var chatId=msg.chat.id
     let text=msg.text;
     if(text && !( (text === "/start" || text === "/authors" || text === "/help" || text.includes("/gc") || text.includes("/twittertrends") ) ) )
         {       
