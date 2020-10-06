@@ -31,18 +31,27 @@ bot.on('message', function onMessage(msg) {
 */
 
 
-bot.onText(/\/start/,(msg,match)=>{
+bot.onText(/\/start$/,(msg,match)=>{
     var chatId=msg.chat.id
     var msgSend='Thanks for using this bot\nUse /\help command to get all the features this bot can provide'
     bot.sendMessage(chatId,msgSend)
 });
 
-bot.onText(/\/authors/,(msg,match)=>{
+bot.onText(/\/authors$/,(msg,match)=>{
     var chatId=msg.chat.id
     bot.sendMessage(chatId,'Jayant\nGurmeet\nHrishita')
 });
 
-bot.onText(/\/help/,(msg,match)=>{
+bot.onText(/\/help$/,(msg,match)=>{
     var chatId=msg.chat.id
-    bot.sendMessage(chatId,'Currently in developnment')
+    msgSend="/authors   :   To get names of devs\n"+
+            "/gc <options>  :   Use this command to get Google Contents\n"+
+            "    <options>  :   classroomID, contentName\n";
+            
+    bot.sendMessage(chatId,msgSend)
+});
+
+bot.onText(/\/gc/,(msg,match)=>{
+    var chatId=msg.chat.id
+    bot.sendMessage(chatId,'')
 });
