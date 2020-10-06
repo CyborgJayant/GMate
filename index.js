@@ -61,8 +61,9 @@ bot.onText(/\/twittertrends/,(msg,match)=>{
     bot.sendMessage(chatId,'Will link API support shortly')
 });
 
-
+/*
 bot.onText(/?!(\/start)(\/authors)(\/help)(\/gc)(\/twittertrends)/,(msg,match)=>{
     var chatId=msg.chat.id
     bot.sendMessage(chatId,'Please Enter a valid command/message')
 });
+*/
