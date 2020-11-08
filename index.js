@@ -60,13 +60,18 @@ const client = new Client({
   refreshToken: '1//0g9_5xHZ6uPxlCgYIARAAGBASNwF-L9IrsA_8G5zdeGkzfy8wOvFLvtJssI5L_vboYUY8YRBRp80SjN6zdfIVeu85DNspsXDdvYo'
 })
 
-bot.onText(/\/gc/,(msg,match)=>{
+bot.onText(/\/gc(.+)/,(msg,match)=>{
 //    var chatId=msg.chat.id
 //    bot.sendMessage(chatId,'Will link API support shortly')
-    
-
-    
+     let count=0;
   const chatId=msg.chat.id;
+    
+    let courseName=match[1];
+    if(courseName.length!=0)
+    {
+        courseName.substring(1);
+    }
+   
   bot.sendMessage(chatId,"wait plz...");
     client.getCourses()
      .then(data =>{
@@ -79,8 +84,15 @@ bot.onText(/\/gc/,(msg,match)=>{
        for(var i in json2)
        {
          //console.log(json2[i].id);
-         bot.sendMessage(chatId,"id: "+json2[i].id+"\n name:  "+json2[i].name+"\n section:"+json2[i].section)
+           if(json2[i].name.includes(courseName))
+           {
+               count++;
+               bot.sendMessage(chatId,"id: "+json2[i].id+"\n name:  "+json2[i].name+"\n section:"+json2[i].section)
+           }
        }
+        
+        if(count==0)
+            bot.sendMessage(chatId,"No Course with such name")
      })
   
 });
