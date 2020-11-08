@@ -75,10 +75,15 @@ bot.onText(/\/gc(.+)/,(msg,match)=>{
   bot.sendMessage(chatId,"wait plz...");
     client.getCourses()
      .then(data =>{
-    
+        
+        
       // console.log(data);
        const json=JSON.stringify(data);
        const json2=JSON.parse(json);
+        
+        
+    bot.sendMessage("Testing json:"+json)
+    bot.sendMessage("Testing json2:"+json2)
        
        //console.log(json2[0]);
        for(var i in json2)
