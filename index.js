@@ -87,7 +87,7 @@ bot.onText(/\/gc(.+)/,(msg,match)=>{
            if(json2[i].name.includes(courseName))
            {
                count++;
-               bot.sendMessage(chatId,"id: "+json2[i].id+"\n name:  "+json2[i].name+"\n section:"+json2[i].section)
+               bot.sendMessage(chatId,"id: "+json2[i].id+"\n name:  "+json2[i].name+"\n section:"+json2[i].section+"Tt : cN:"+courseName)
            }
        }
         
