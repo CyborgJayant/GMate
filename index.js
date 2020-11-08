@@ -69,7 +69,7 @@ bot.onText(/\/gc(.+)/,(msg,match)=>{
     let courseName=match[1];
     if(courseName.length!=0)
     {
-        courseName.substring(1);
+        courseName=courseName.substring(1);
     }
    
   bot.sendMessage(chatId,"wait plz...");
@@ -82,9 +82,6 @@ bot.onText(/\/gc(.+)/,(msg,match)=>{
        const json2=JSON.parse(json);
         
         
-    bot.sendMessage("Testing json:"+json)
-    bot.sendMessage("Testing json2:"+json2)
-       
        //console.log(json2[0]);
        for(var i in json2)
        {
