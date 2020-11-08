@@ -51,9 +51,38 @@ bot.onText(/\/help$/,(msg,match)=>{
     bot.sendMessage(chatId,msgSend)
 });
 
+
+
+const Client = require('google-classroom') 
+const client = new Client({
+  clientId: '937419253070-o9a9l93ipqjst46pp86o88ctpvk3ddir.apps.googleusercontent.com',
+  clientSecret:  'PWVplsn-PuUTvDRO1YtA2D_R',
+  refreshToken: '1//0g9_5xHZ6uPxlCgYIARAAGBASNwF-L9IrsA_8G5zdeGkzfy8wOvFLvtJssI5L_vboYUY8YRBRp80SjN6zdfIVeu85DNspsXDdvYo'
+})
+
 bot.onText(/\/gc/,(msg,match)=>{
-    var chatId=msg.chat.id
-    bot.sendMessage(chatId,'Will link API support shortly')
+//    var chatId=msg.chat.id
+//    bot.sendMessage(chatId,'Will link API support shortly')
+    
+
+    
+  const chatId=msg.chat.id;
+  bot.sendMessage(chatId,"wait plz...");
+    client.getCourses()
+     .then(data =>{
+    
+      // console.log(data);
+       const json=JSON.stringify(data);
+       const json2=JSON.parse(json);
+       
+       //console.log(json2[0]);
+       for(var i in json2)
+       {
+         //console.log(json2[i].id);
+         bot.sendMessage(chatId,"id: "+json2[i].id+"\n name:  "+json2[i].name+"\n section:"+json2[i].section)
+       }
+     })
+  
 });
 
 bot.onText(/\/twittertrends/,(msg,match)=>{
