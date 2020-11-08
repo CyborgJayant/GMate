@@ -92,7 +92,7 @@ bot.onText(/\/gc(.+)/,(msg,match)=>{
        }
         
         if(count==0)
-            bot.sendMessage(chatId,"No Course with such name")
+            bot.sendMessage(chatId,"No Course with such name"+"Tt : cN:"+courseName)
      })
   
 });
