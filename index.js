@@ -144,13 +144,11 @@ bot.onText(/\/assgn(.*)/,(msg,match)=>{
                  
             request
               .get(`https://classroom.googleapis.com/v1/courses/${data[i].id}/courseWork`)
-              .set('Authorization', `Bearer ${refreshToken}`)
               .type('json')
               .query({
                 courseId
               })
               .end((err, res) =>{
-                if(err) reject(err.stack);
                 if(res.body.courseWork.length == 1){
                     bot.sendMessage(chatId,"id: "+res.body.courseWork[0].title+"dd"+res.body.courseWork[0].dueDate+"dt"+res.body.courseWork[0].dueTime)
                 }else{
