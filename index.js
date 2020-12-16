@@ -105,6 +105,13 @@ bot.onText(/\/gc(.*)/,(msg,match)=>{
                    }
            }
      })
+    
+    bot.sendMessage(chatId,"wait plz...");
+    client.getCourseWork()
+     .then(data =>{
+        
+        bot.sendMessage(chatId,data)
+    })
   
 });
 
