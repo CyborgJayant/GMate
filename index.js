@@ -55,9 +55,9 @@ bot.onText(/\/help$/,(msg,match)=>{
 
 const Client = require('google-classroom') 
 const client = new Client({
-  clientId: '937419253070-o9a9l93ipqjst46pp86o88ctpvk3ddir.apps.googleusercontent.com',
-  clientSecret:  'PWVplsn-PuUTvDRO1YtA2D_R',
-  refreshToken: '1//0g9_5xHZ6uPxlCgYIARAAGBASNwF-L9IrsA_8G5zdeGkzfy8wOvFLvtJssI5L_vboYUY8YRBRp80SjN6zdfIVeu85DNspsXDdvYo'
+  clientId: '771408724733-v8fm041qbdqmj3mee7e4lb7tmoiso0sb.apps.googleusercontent.com',
+  clientSecret:  'wmOLkfsWm5YkAwR5bLJYSOTm',
+  refreshToken: '1//0gou5GXdAIbQlCgYIARAAGBASNwF-L9Ir_33Sj2I86FcwvbRpKPpXQwx5gGY5YY8I-ISMR1UZt0WwlQCjSrF6WKww4tiRjRJ35HQ'
 })
 
 bot.onText(/\/gc(.*)/,(msg,match)=>{
