@@ -93,10 +93,10 @@ bot.onText(/\/gc(.*)/,(msg,match)=>{
            }
        }
         
-        if(count==0 && courseName.length!=0)
+        if(count==0 && courseName!="")
             bot.sendMessage(chatId,"No Course with such name")
         
-        if(courseName.length==0)
+        if(courseName!="")
            {
                for(var i in json2)
                    {
