@@ -115,6 +115,41 @@ bot.onText(/\/gc(.*)/,(msg,match)=>{
   */
 });
 
+
+bot.onText(/\/assgn(.*)/,(msg,match)=>{
+    
+    let count=0;
+  const chatId=msg.chat.id;
+    
+    let courseName=match[1];
+    if(courseName.length!=0)
+    {
+        courseName=courseName.substring(1);
+    }
+   
+  bot.sendMessage(chatId,"wait plz...");
+    request
+      .get(`https://classroom.googleapis.com/v1/courses/${clientId}/courseWork`)
+      .set('Authorization', `Bearer ${refreshToken}`)
+      .type('json')
+      .query({
+        courseId
+      })
+      .end((err, res) =>{
+        if(err) reject(err.stack);
+        if(res.body.courseWork.length == 1){
+            bot.sendMessage(chatId,"id: "+res.body.courseWork[0].title+"dd"+res.body.courseWork[0].dueDate+"dt"+res.body.courseWork[0].dueTime)
+        }else{
+          
+          for(let i = 0; i < res.body.courseWork.length; i++){
+            bot.sendMessage(chatId,"id: "+res.body.courseWork[i].title+"dd"+res.body.courseWork[i].dueDate+"dt"+res.body.courseWork[i].dueTime)
+          }
+        }
+      })
+});
+
+
+
 bot.onText(/\/twittertrends/,(msg,match)=>{
     var chatId=msg.chat.id
     bot.sendMessage(chatId,'Will link API support shortly')
@@ -130,7 +165,7 @@ bot.onText(/?!(\/start)(\/authors)(\/help)(\/gc)(\/twittertrends)/,(msg,match)=>
 bot.on('message', function(msg){
     var chatId=msg.chat.id
     let text=msg.text;
-    if(text && !( (text === "/start" || text === "/authors" || text === "/help" || text.includes("/gc") || text.includes("/twittertrends") ) ) )
+    if(text && !( (text === "/start" || text === "/authors" || text === "/help" || text.includes("/gc") || text.includes("/twittertrends") || text.includes("/assgn") ) ) )
         {       
     bot.sendMessage(chatId, "Please Enter a valid command/message");
         }
