@@ -118,7 +118,6 @@ bot.onText(/\/gc(.*)/,(msg,match)=>{
 
 bot.onText(/\/assgn(.*)/,(msg,match)=>{
     
-    let count=0;
   const chatId=msg.chat.id;
     
     let courseName=match[1];
@@ -128,24 +127,46 @@ bot.onText(/\/assgn(.*)/,(msg,match)=>{
     }
    
   bot.sendMessage(chatId,"wait plz...");
-    request
-      .get(`https://classroom.googleapis.com/v1/courses/${clientId}/courseWork`)
-      .set('Authorization', `Bearer ${refreshToken}`)
-      .type('json')
-      .query({
-        courseId
-      })
-      .end((err, res) =>{
-        if(err) reject(err.stack);
-        if(res.body.courseWork.length == 1){
-            bot.sendMessage(chatId,"id: "+res.body.courseWork[0].title+"dd"+res.body.courseWork[0].dueDate+"dt"+res.body.courseWork[0].dueTime)
-        }else{
-          
-          for(let i = 0; i < res.body.courseWork.length; i++){
-            bot.sendMessage(chatId,"id: "+res.body.courseWork[i].title+"dd"+res.body.courseWork[i].dueDate+"dt"+res.body.courseWork[i].dueTime)
-          }
-        }
-      })
+    
+    client.getCourses()
+     .then(data =>{
+        
+        
+      // console.log(data);
+        
+        
+       //console.log(json2[0]);
+       for(var i in json2)
+       {
+         //console.log(json2[i].id);
+           if((data[i].name.includes(courseName)||data[i].section.includes(courseName)) && courseName!="")
+           {
+                 
+            request
+              .get(`https://classroom.googleapis.com/v1/courses/${data[i].id}/courseWork`)
+              .set('Authorization', `Bearer ${refreshToken}`)
+              .type('json')
+              .query({
+                courseId
+              })
+              .end((err, res) =>{
+                if(err) reject(err.stack);
+                if(res.body.courseWork.length == 1){
+                    bot.sendMessage(chatId,"id: "+res.body.courseWork[0].title+"dd"+res.body.courseWork[0].dueDate+"dt"+res.body.courseWork[0].dueTime)
+                }else{
+
+                  for(let i = 0; i < res.body.courseWork.length; i++){
+                    bot.sendMessage(chatId,"id: "+res.body.courseWork[i].title+"dd"+res.body.courseWork[i].dueDate+"dt"+res.body.courseWork[i].dueTime)
+                  }
+                }
+              })
+               
+           }
+       }
+    
+    })
+    
+    
 });
 
 
