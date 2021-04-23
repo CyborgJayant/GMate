@@ -73,6 +73,7 @@ bot.onText(/\/gc(.*)/,(msg,match)=>{
     }
    
   bot.sendMessage(chatId,"wait plz...");
+    
     client.getCourses()
      .then(data =>{
         
@@ -105,15 +106,42 @@ bot.onText(/\/gc(.*)/,(msg,match)=>{
                    }
            }
      })
-    /*
-    bot.sendMessage(chatId,"wait plz...");
-    client.getCourseWork()
-     .then(data =>{
-        
-        bot.sendMessage(chatId,data)
-    })
-  */
+    
+    
+    
 });
+
+
+bot.onText(/\/test12(.*)/,(msg,match)=>{
+  const chatId=msg.chat.id;
+    
+    let courseName=match[1];
+    if(courseName.length!=0)
+    {
+        courseName=courseName.substring(1);
+    }
+   
+  bot.sendMessage(chatId,"wait plz...");
+    
+    client.getAssignments()
+     .then(data =>{
+        console.log(data);
+               bot.sendMessage(chatId,"data: "+data)
+           
+     })
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
