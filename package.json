@@ -17,6 +17,7 @@
   "author": "FUBAR",
   "license": "ISC",
   "dependencies": {
+    "google-classroom": "^2.1.0",
     "node-telegram-bot-api": "^0.50.0",
     "now": "^20.1.1"
   }
